@@ -1,0 +1,135 @@
+[
+  {
+    "name": "topbar",
+    "layer": "top",
+    "fixed-center": true,
+    "modules-left": [
+      "custom/launcher",
+      "cpu",
+      "memory"
+    ],
+    "modules-center": [
+      "wlr/workspaces"
+    ],
+    "modules-right": [
+      "clock",
+      "pulseaudio",
+      "custom/power"
+    ],
+    "wlr/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "󱄅",
+        "6": "󰜈"
+      },
+      "sort-by-number": true,
+      "persistent_workspaces": {
+        "2": [],
+        "3": [],
+        "4": [],
+        "5": []
+      }
+    },
+    "pulseaudio": {
+      "tooltip": false,
+      "scroll-step": 5,
+      "format": "{icon} {volume}%",
+      "format-muted": "{icon} {volume}%",
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "format-icons": {
+        "default": [
+          "🔈",
+          "🔉",
+          "🔊"
+        ]
+      }
+    },
+    "network": {
+      "tooltip": false,
+      "format-wifi": "🛜  {essid}",
+      "format-ethernet": ""
+    },
+    "battery": {
+      "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 20
+      },
+      "format": "{icon}  {capacity}%",
+      "format-charging": "🔌 {capacity}%",
+      "format-plugged": "🔌 {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-icons": [
+        "🪫",
+        "🪫",
+        "🔋",
+        "🔋",
+        "🔋"
+      ]
+    },
+    "clock": {
+      "format": "{:🕑 %I:%M %p}"
+    },
+    "cpu": {
+      "interval": 15,
+      "format": "💻 {avg_frequency}GHz",
+      "max-length": 15
+    },
+    "memory": {
+      "interval": 30,
+      "format": "🎞 {avail}GiB",
+      "max-length": 15
+    },
+    "custom/launcher": {
+      "format": " ",
+      "on-click": "wofi --show drun -H 600 -W 800",
+      "on-click-right": "killall wofi"
+    },
+    "custom/power": {
+      "format": " ",
+      "on-click": "wlogout"
+    }
+  },
+  {
+    "name": "bottombar",
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "modules-left": [
+      "battery"
+    ],
+    "modules-center": [],
+    "modules-right": [
+      "network"
+    ],
+    "network": {
+      "tooltip": false,
+      "format-wifi": "🛜  {ipaddr}",
+      "format-ethernet": "🛜  {ipaddr}",
+      "format-alt": "🛜  {ipaddr}"
+    },
+    "battery": {
+      "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 20
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-alt": "{icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  }
+]
