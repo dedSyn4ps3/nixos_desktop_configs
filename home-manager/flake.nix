@@ -1,19 +1,15 @@
 {
-  description = "Home Manager configuration for user";
+  description = "Home Manager configuration for User";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland.url = "github:hyprwm/Hyprland";
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -22,38 +18,33 @@
       inherit pkgs;
 
       modules = [
-        hyprland.homeManagerModules.default
-        {
-          wayland.windowManager.hyprland = {
-            enable = true;
-            package = hyprland.packages.${pkgs.system}.default.override {
-              nvidiaPatches = true;
-            };
-            systemdIntegration = true;
-            extraConfig = builtins.readFile ./hyprland.conf;
-          };
-        }
-        
-        ./home.nix
-        ./vscode.nix
+        ./core
+        ./modules
       ];
 
     };
 
     nixosConfigurations.user = nixpkgs.lib.nixosSystem {
       modules = [
-        hyprland.nixosModules.default
-        {
-          programs.hyprland = {
-            enable = true;
-            package = hyprland.packages.${pkgs.system}.default.override {
-              nvidiaPatches = true;
-            };
-            systemdIntegration = true;
-            extraConfig = builtins.readFile ./hyprland.conf;
-          };
-        }
+        ./core/virt.nix
       ];
+    };
+
+    devShells = {
+      goDev = pkgs.mkShell {
+        name = "Go Dev";
+        nativeBuildInputs = with pkgs; [ go gotools gopls ];
+        shellHook = ''
+          echo
+          tput setaf 201
+          echo -e '|============================|'
+          tput setaf 255
+          echo -e '    Creating Go Environment    '
+          tput setaf 201
+          echo -e '|============================|\e[0m'
+          echo
+        '';
+      };
     };
   };
 }

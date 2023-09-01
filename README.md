@@ -1,6 +1,6 @@
 # NixOS Desktop Configs
 
-<img src="./screenshots/catppuccin-rainbow-nix.png">
+<img src="./screenshots/nixos-hyprland.png">
 
 <br>
 
@@ -17,20 +17,25 @@ At this point, I'm *constantly* using my NixOS build! While I've yet to truly sc
 
 <br>
 
+> **UPDATE:** This newly refactored configuration setup is an evolution of the original Dell G3 config, and is now running on a recently acquired Lenovo ThinkPad.
+
+<br>
+
 ## Setup ❄
-I wanted to go ahead and share the basic setup configs for my G3 laptop as I continue to gradually expand and build upon it. There are dozens of excellent repo's out there for various setups (some of which have been instrumental to my own development), and I hope this can serve to be one more example for those new to NixOS and looking to get something like **`Hyprland`** up and running smoothly.
+I wanted to go ahead and share the basic setup configs for my G3 (and now ThinkPad) laptop as I continue to gradually expand and build upon it. There are dozens of excellent repo's out there for various setups (some of which have been instrumental to my own development), and I hope this can serve to be one more example for those new to NixOS and looking to get something like **`Hyprland`** up and running smoothly.
 
 Using the **`home-manager`** configuration in this repo will result in the following desktops:
 
     - GNOME
     - Hyprland
 
-It includes a handful of **`gnome-shell-extensions`** that I use on a regular basis for enhancing my desktop experience, as well as an additional `Catppuccin` stylesheet should you want to incorporate any other pastel colors into your main `style.css` file. Remember, even though the **`nix`** file installs all of the aforementioned extensions, it's still up to the user to enable and configure them to their liking! 😁
+It includes a handful of **`gnome-shell-extensions`** that I use on a regular basis for enhancing my desktop experience, as well as an additional `Catppuccin` stylesheet should you want to incorporate any other pastel colors into your main `style.css` file. 
+
+Remember, even though the **`nix`** file installs all of the aforementioned extensions, it's still up to the user to enable and configure them to their liking! 😁
 
 <br>
 
 ## GNOME
----------
 
 <br>
 
@@ -39,12 +44,11 @@ It includes a handful of **`gnome-shell-extensions`** that I use on a regular ba
 <br>
 
 ## Hyprland
-------------
 
 <br>
 
-<img src="./screenshots/hyprland_desktop.png">
-<img src="./screenshots/hyprland_workspace.png">
+<img src="./screenshots/nixos-hyprland.png">
+<img src="./screenshots/nixos-hyprland2.png" style="padding-top:10">
 
 <br>
 
